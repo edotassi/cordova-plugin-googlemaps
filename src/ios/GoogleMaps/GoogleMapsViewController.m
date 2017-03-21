@@ -159,11 +159,14 @@ NSDictionary *initOptions;
         self.map.settings.compassButton = isEnabled;
       }
       //myLocationButton
+      if ([controls valueForKey:@"myLocationPointer"] != nil) {
+        isEnabled = [[controls valueForKey:@"myLocationPointer"] boolValue];
+        self.map.myLocationEnabled = isEnabled;
+      }
       if ([controls valueForKey:@"myLocationButton"] != nil) {
         isEnabled = [[controls valueForKey:@"myLocationButton"] boolValue];
         self.map.settings.myLocationButton = isEnabled;
-        self.map.myLocationEnabled = isEnabled;
-      }
+      } 
       //indoorPicker
       if ([controls valueForKey:@"indoorPicker"] != nil) {
         isEnabled = [[controls valueForKey:@"indoorPicker"] boolValue];
