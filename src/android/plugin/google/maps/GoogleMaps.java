@@ -649,6 +649,17 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
           if (params.has("controls")) {
             JSONObject controls = params.getJSONObject("controls");
 
+            if (controls.has("myLocationPointer")) {
+              Boolean isEnabled = controls.getBoolean("myLocationPointer");
+              map.setMyLocationEnabled(isEnabled);
+            }
+             
+            if (controls.has("myLocationButton")) {
+              Boolean isEnabled = controls.getBoolean("myLocationButton"); 
+              map.getUiSettings().setMyLocationButtonEnabled(false);
+            }
+                
+            /*    
             if (controls.has("myLocationButton")) {
               Boolean isEnabled = controls.getBoolean("myLocationButton");
               JSONArray args = new JSONArray();
@@ -664,6 +675,9 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
             } else {
               callbackContext.success();
             }
+            */
+                
+            callbackContext.success();
           } else {
             callbackContext.success();
           }
